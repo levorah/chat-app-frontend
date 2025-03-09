@@ -1,10 +1,11 @@
+import Login from "./pages/login/login"
 
 function App() {
 
   return (
-    <>
-      <h1 className="text-bold p-4">hello</h1>
-    </>
+    <div className="p-4 h-screen flex items-center justify-center">
+      <Login />
+    </div>
   )
 }
 
