@@ -1,7 +1,6 @@
 import { useState } from "react"
 import { SignupDto } from "../interface/signup.interface"
 import toast from "react-hot-toast"
-import { data } from "react-router-dom"
 
 const useSignup = () => {
     const [loading, setLoading] = useState(false)
