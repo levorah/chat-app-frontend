@@ -1,9 +1,11 @@
 import { useState } from "react"
 import toast from "react-hot-toast"
 import { useAuthContext } from "../context/authContext"
+import useAccessTokenStore from "../zustand/useAccessToken"
 
 const useLogin = () => {
     const { setToken } = useAuthContext()
+    const { setAccessToken } = useAccessTokenStore()
     const [loading, setLoading] = useState(false)
     const login = async (username: string, password: string) => {
         setLoading(true)
@@ -24,9 +26,12 @@ const useLogin = () => {
             if (data.error) {
                 throw new Error(data.error)
             }
+            let accessToken = JSON.stringify(data.access_token);
+            localStorage.setItem("accessToken", accessToken);
+            setToken(data);
+            console.log(accessToken, 'in the login page accsstoekn')
+            setAccessToken(accessToken);
 
-            localStorage.setItem("accessToken", JSON.stringify(data.access_token))
-            setToken(data)
         } catch (error: any) {
             toast.error(error.message)
         } finally {

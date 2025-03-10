@@ -25,10 +25,7 @@ export const AuthContextProvider = ({ children }: AuthProps) => {
 
     const storedToken = localStorage.getItem("accessToken")
 
-    const { setAcessToken } = useAccessTokenStore()
-
     const parsedToken = storedToken ? JSON.parse(storedToken) : null
-    setAcessToken(parsedToken)
 
     const [authToken, setToken] = useState<string | null>(parsedToken)
     return (

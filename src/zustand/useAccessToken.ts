@@ -2,11 +2,11 @@ import { create } from "zustand";
 
 interface AccessTokenType {
     accessToken: string;
-    setAcessToken: (accessToken: string) => void;
+    setAccessToken: (accessToken: string) => void;
 }
 const useAccessTokenStore = create<AccessTokenType>((set) => ({
     accessToken: "",
-    setAcessToken: (accessToken: string) => set({ accessToken }),
+    setAccessToken: (accessToken) => set({ accessToken }),
 }))
 
 export default useAccessTokenStore
