@@ -30,7 +30,6 @@ const Conversation = ({ conversation, lastIdx, emoji }: { conversation: User, la
                 </div>
             </div>
             {!lastIdx && <div className='divider my-0 py-0 h-1' />}
-            <img src="https://avatar.iran.liara.run/public/boy?username=sam" alt="" />
         </>
     );
 };
