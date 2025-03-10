@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react"
 import toast from "react-hot-toast"
+import { User } from "../interface"
 
 const useGetConversations = () => {
     const [loading, setLoading] = useState(false)
-    const [conversations, setConversations] = useState([])
+    const [conversations, setConversations] = useState<User[]>([])
 
     useEffect(() => {
         const getConversation = async () => {
@@ -23,6 +24,7 @@ const useGetConversations = () => {
                 if (data.error) {
                     throw new Error(data.error)
                 }
+                console.log(data, 'data is hererer')
                 setConversations(data)
             } catch (error: any) {
                 toast.error(error.message)

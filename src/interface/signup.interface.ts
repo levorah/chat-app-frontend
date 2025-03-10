@@ -6,3 +6,4 @@ export interface SignupDto {
     confirmPassword: string;
     gender: string;
 }
+
