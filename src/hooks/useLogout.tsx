@@ -9,6 +9,7 @@ const useLogout = () => {
         try {
             const res = await fetch(`/v1/api/auth/logout`)
             const data = await res.json()
+            console.log(data,'===============>> data')
             if (data.error) {
                 throw new Error(data.error)
             }
