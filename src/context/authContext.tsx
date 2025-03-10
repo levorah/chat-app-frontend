@@ -12,7 +12,12 @@ type AuthProps = {
 export const AuthContext = createContext<AuthContextType | undefined>(undefined)
 
 export const useAuthContext = () => {
-    return useContext(AuthContext)
+    const context = useContext(AuthContext)
+    if (!context) {
+        throw new Error("Use Context must be within a AuthContext Provider")
+    }
+    return context
+
 }
 
 export const AuthContextProvider = ({ children }: AuthProps) => {
