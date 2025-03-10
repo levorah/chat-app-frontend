@@ -1,10 +1,19 @@
 import { create } from "zustand";
 
-const useConversation = create((set) => ({
-    selectedConversation: null,
-    setSelectedConversation: (selectedConversation: any) => set({ selectedConversation }),
+interface ConversationState {
+    selectedConversation: string;
+    setSelectedConversation: (selectedConversation: any) => void;
+    messages: any[];
+    setMessages: (messages: any[]) => void;
+}
+
+const useConversation = create<ConversationState>((set) => ({
+    selectedConversation: "",
+    setSelectedConversation: (selectedConversation) => set({ selectedConversation }),
     messages: [],
-    setMessages: (messages: any) => set({ messages })
+    setMessages: (messages) => set({ messages }),
+
+
 }))
 
 export default useConversation
