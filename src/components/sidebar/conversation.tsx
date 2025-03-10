@@ -2,16 +2,16 @@ import { User } from "../../interface";
 import useConversation from "../../zustand/useConversation";
 
 const Conversation = ({ conversation, lastIdx, emoji }: { conversation: User, lastIdx: boolean, emoji: string }) => {
-    console.log(conversation, 'conversation is showing in conversation component')
+
     const { selectedConversation, setSelectedConversation } = useConversation()
-    console.log(selectedConversation, 'heheheheh')
-    const isSelected = selectedConversation === conversation._id
+
+    const isSelected = selectedConversation?._id === conversation._id
     return (
         <>
             <div className={`flex gap-2 items-center hover:bg-sky-500 rounded p-2 py-1 cursor-pointer
                     ${isSelected ? "bg-sky-500" : ""}
                 `}
-                onClick={() => setSelectedConversation(conversation._id)}
+                onClick={() => setSelectedConversation(conversation)}
             >
                 <div className='avatar online'>
                     <div className='w-12 rounded-full'>

@@ -21,7 +21,7 @@ export const useAuthContext = () => {
 }
 
 export const AuthContextProvider = ({ children }: AuthProps) => {
-    const storedUser = localStorage.getItem("chat-user")
+    const storedUser = localStorage.getItem("accessToken")
     const parsedUser = storedUser ? JSON.parse(storedUser) : null
     const [authUser, setAuthUser] = useState<string | null>(parsedUser)
     return (

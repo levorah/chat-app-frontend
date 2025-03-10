@@ -6,7 +6,7 @@ const Message = () => {
                 <div className="w-10 rounded-full">
                     <img
                         alt="Tailwind CSS chat bubble component"
-                        src={'https://hehe'} />
+                    />
                 </div>
             </div>
             <div className="chat-bubble text-white bg-blue-500">Hi Whatsup</div>
