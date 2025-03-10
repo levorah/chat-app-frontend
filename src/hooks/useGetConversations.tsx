@@ -8,8 +8,17 @@ const useGetConversations = () => {
     useEffect(() => {
         const getConversation = async () => {
             setLoading(true);
+            const access_token = localStorage.getItem("accessToken")
+            if (!access_token) {
+                throw new Error("Token Expired")
+            }
+            const token = JSON.parse(access_token)
             try {
-                const res = await fetch(`/v1/api/users`)
+                const res = await fetch(`/v1/api/users`, {
+                    headers: {
+                        "Authorization": `Bearer ${token}`
+                    }
+                })
                 const data = await res.json()
                 if (data.error) {
                     throw new Error(data.error)
