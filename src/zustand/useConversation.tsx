@@ -10,11 +10,11 @@ interface ConversationState {
 
 const useConversation = create<ConversationState>((set) => ({
     selectedConversation: {
-        fullname: "",
-        username: "",
-        _id: "",
-        gender: "",
-        profilePic: ""
+        fullname:"",
+        username:"",
+        _id:"",
+        gender:"",
+        profilePic:""
     },
     setSelectedConversation: (selectedConversation) => set({ selectedConversation }),
     messages: [],
