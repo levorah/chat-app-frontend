@@ -1,10 +1,12 @@
 import { useState } from "react"
 import useConversation from "../zustand/useConversation"
 import toast from "react-hot-toast"
+import useAccessTokenStore from "../zustand/useAccessToken"
 
 const useSendMessage = () => {
     const [loading, setLoading] = useState(false)
 
+    const { accessToken } = useAccessTokenStore()
     const { messages, setMessages, selectedConversation } = useConversation()
 
     const sendMessage = async (message: string) => {
@@ -15,7 +17,8 @@ const useSendMessage = () => {
             const res = await fetch(`/v1/api/messages/send/${selectedConversation._id}`, {
                 method: "POST",
                 headers: {
-                    "Content-Type": "application/json"
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${accessToken}`
                 },
                 body: JSON.stringify({ message })
             })

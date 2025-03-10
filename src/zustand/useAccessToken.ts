@@ -6,7 +6,7 @@ interface AccessTokenType {
 }
 const useAccessTokenStore = create<AccessTokenType>((set) => ({
     accessToken: "",
-    setAcessToken: (accessToken: string) => set({ accessToken })
+    setAcessToken: (accessToken: string) => set({ accessToken }),
 }))
 
 export default useAccessTokenStore
