@@ -3,7 +3,7 @@ import toast from "react-hot-toast"
 import { useAuthContext } from "../context/authContext"
 
 const useLogin = () => {
-    const { setAuthUser } = useAuthContext()
+    const { setToken } = useAuthContext()
     const [loading, setLoading] = useState(false)
     const login = async (username: string, password: string) => {
         setLoading(true)
@@ -26,7 +26,7 @@ const useLogin = () => {
             }
 
             localStorage.setItem("accessToken", JSON.stringify(data.access_token))
-            setAuthUser(data)
+            setToken(data)
         } catch (error: any) {
             toast.error(error.message)
         } finally {

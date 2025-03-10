@@ -1,10 +1,11 @@
 import React, { createContext, ReactNode, useContext, useState } from "react";
+import useAccessTokenStore from "../zustand/useAccessToken";
 
 
 
 type AuthContextType = {
-    authUser: string | null;
-    setAuthUser: React.Dispatch<React.SetStateAction<string | null>>;
+    authToken: string | null;
+    setToken: React.Dispatch<React.SetStateAction<string | null>>;
 }
 type AuthProps = {
     children: ReactNode
@@ -21,11 +22,17 @@ export const useAuthContext = () => {
 }
 
 export const AuthContextProvider = ({ children }: AuthProps) => {
-    const storedUser = localStorage.getItem("accessToken")
-    const parsedUser = storedUser ? JSON.parse(storedUser) : null
-    const [authUser, setAuthUser] = useState<string | null>(parsedUser)
+
+    const storedToken = localStorage.getItem("accessToken")
+
+    const { setAcessToken } = useAccessTokenStore()
+
+    const parsedToken = storedToken ? JSON.parse(storedToken) : null
+    setAcessToken(parsedToken)
+
+    const [authToken, setToken] = useState<string | null>(parsedToken)
     return (
-        <AuthContext.Provider value={{ authUser, setAuthUser }}>
+        <AuthContext.Provider value={{ authToken, setToken }}>
             {children}
         </AuthContext.Provider>
     )
