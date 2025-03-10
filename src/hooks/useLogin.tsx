@@ -6,6 +6,7 @@ const useLogin = () => {
     const { setAuthUser } = useAuthContext()
     const [loading, setLoading] = useState(false)
     const login = async (username: string, password: string) => {
+        setLoading(true)
         try {
 
             const input = handleInputErrrors(username, password)
@@ -19,6 +20,9 @@ const useLogin = () => {
             })
 
             const data = await res.json()
+            if (data.error) {
+                throw new Error(data.error)
+            }
 
             localStorage.setItem("chat-user", JSON.stringify(data))
             setAuthUser(data)
@@ -47,5 +51,4 @@ const handleInputErrrors = (username: string, password: string) => {
     }
 
     return true
-
 }
