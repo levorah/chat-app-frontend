@@ -7,14 +7,12 @@ const useGetMessages = () => {
     const { messages, setMessages, selectedConversation } = useConversation()
 
     // const { accessToken } = useAccessTokenStore()
-    // console.log(accessToken, 'accessToken is here in get messages')
     // const token = JSON.parse(accessToken)
     useEffect(() => {
         const getMessages = async () => {
             setLoading(true)
             try {
                 const accessToken = localStorage.getItem("accessToken")
-                console.log(accessToken,'access Token in getmessages')
 
                 if (!accessToken) {
                     throw new Error("Token Expired")
@@ -26,7 +24,7 @@ const useGetMessages = () => {
                     }
                 });
                 const data = await res.json();
-                console.log(data, 'data is showing in get message route ')
+
                 if (data.error) {
                     throw new Error(data.error)
                 }

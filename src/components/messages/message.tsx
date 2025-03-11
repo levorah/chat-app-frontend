@@ -2,8 +2,6 @@ import { extractTime } from "../../utils/extractTime"
 import useConversation from "../../zustand/useConversation"
 
 const Message = ({ message }: { message: any }) => {
-    console.log(message.message, 'message is here')
-    console.log(message, 'message is here from props message')
 
     const { selectedConversation } = useConversation()
     const userId = localStorage.getItem("userId")

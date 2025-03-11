@@ -8,8 +8,6 @@ const Conversation = ({ conversation, lastIdx, emoji }: { conversation: User, la
     const { onlineUsers } = useSocketContext()
     const isSelected = selectedConversation?._id === conversation._id
     const isOnline = onlineUsers.includes(conversation._id)
-    console.log(conversation._id,'conversation id ')
-    console.log(isOnline, 'is online is showing')
     return (
         <>
             <div className={`flex gap-2 items-center hover:bg-sky-500 rounded p-2 py-1 cursor-pointer

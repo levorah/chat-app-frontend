@@ -24,7 +24,6 @@ const useGetConversations = () => {
                 if (data.error) {
                     throw new Error(data.error)
                 }
-                console.log(data, 'data is hererer')
                 setConversations(data)
             } catch (error: any) {
                 toast.error(error.message)

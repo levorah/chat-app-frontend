@@ -6,7 +6,6 @@ const useSendMessage = () => {
     const [loading, setLoading] = useState(false)
 
     // const { accessToken } = useAccessTokenStore()
-    // console.log(accessToken, 'accsssToekn in useSendMessage')
     const { messages, setMessages, selectedConversation } = useConversation()
 
     const sendMessage = async (message: string) => {

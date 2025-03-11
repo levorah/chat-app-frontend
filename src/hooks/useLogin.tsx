@@ -22,7 +22,6 @@ const useLogin = () => {
             })
 
             const data = await res.json()
-            console.log(data, 'data is showing')
             if (data.error) {
                 throw new Error(data.error)
             }
@@ -34,7 +33,6 @@ const useLogin = () => {
             localStorage.setItem("userId", data?.userId)
             localStorage.setItem("profilePic", data?.profilePic)
             setProfilePic(data?.profilePic)
-            console.log(accessToken, 'in the login page accsstoekn')
             setAccessToken(accessToken);
 
         } catch (error: any) {

@@ -24,7 +24,6 @@ export const SocketContextProvider = ({ children }: SocketProps) => {
     const { authToken } = useAuthContext()
     const [onlineUsers, setOnlineUsers] = useState([])
     const userId = localStorage.getItem("userId")
-    console.log(userId, 'user from localStorage in socket context')
     useEffect(() => {
         if (authToken) {
             const socket = io(`http://localhost:3001`, {
@@ -35,14 +34,12 @@ export const SocketContextProvider = ({ children }: SocketProps) => {
             setSocket(socket);
 
             socket.on("getOnlineUsers", (users) => {
-                console.log(users, 'users are hear')
                 setOnlineUsers(users)
             })
             return () => {
                 socket.close();
             }
         } else {
-            console.log("inside socket context else statement")
             if (socket) {
                 socket.close()
                 setSocket(null)
