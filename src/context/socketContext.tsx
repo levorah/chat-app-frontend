@@ -1,4 +1,4 @@
-import React, { createContext, ReactNode, useContext, useEffect, useState } from "react";
+import { createContext, ReactNode, useContext, useEffect, useState } from "react";
 import { useAuthContext } from "./authContext";
 import { io, Socket } from "socket.io-client";
 import { DefaultEventsMap } from "socket.io";
@@ -24,7 +24,7 @@ export const SocketContextProvider = ({ children }: SocketProps) => {
     const { authToken } = useAuthContext()
     const [onlineUsers, setOnlineUsers] = useState([])
     const userId = localStorage.getItem("userId")
-    console.log(userId,'user from localStorage in socket context')
+    console.log(userId, 'user from localStorage in socket context')
     useEffect(() => {
         if (authToken) {
             const socket = io(`http://localhost:3001`, {
