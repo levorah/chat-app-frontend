@@ -5,7 +5,7 @@ import useAccessTokenStore from "../zustand/useAccessToken"
 
 const useLogin = () => {
     const { setToken } = useAuthContext()
-    const { setAccessToken } = useAccessTokenStore()
+    const { setAccessToken, setUserId, setProfilePic } = useAccessTokenStore()
     const [loading, setLoading] = useState(false)
     const login = async (username: string, password: string) => {
         setLoading(true)
@@ -29,6 +29,11 @@ const useLogin = () => {
             let accessToken = JSON.stringify(data.access_token);
             localStorage.setItem("accessToken", accessToken);
             setToken(data);
+            localStorage.setItem("userData", data)
+            setUserId(data?.userId)
+            localStorage.setItem("userId", data?.userId)
+            localStorage.setItem("profilePic", data?.profilePic)
+            setProfilePic(data?.profilePic)
             console.log(accessToken, 'in the login page accsstoekn')
             setAccessToken(accessToken);
 
