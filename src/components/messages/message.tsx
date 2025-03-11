@@ -1,3 +1,4 @@
+import { extractTime } from "../../utils/extractTime"
 import useConversation from "../../zustand/useConversation"
 
 const Message = ({ message }: { message: any }) => {
@@ -11,6 +12,7 @@ const Message = ({ message }: { message: any }) => {
     const chatClassName = fromMe ? "chat-end" : "chat-start";
     const profilePics = fromMe ? profilePic : selectedConversation.profilePic;
     const bubbleBgColor = fromMe ? "bg-gray-500" : "";
+    const formattedTime = extractTime(message.createdAt)
     return (
         <div className={`chat ${chatClassName}`}>
             <div className="chat-image avatar">
@@ -21,8 +23,8 @@ const Message = ({ message }: { message: any }) => {
                     />
                 </div>
             </div>
-            <div className={`chat-bubble text-white ${bubbleBgColor}`}>{message.message}</div>
-            <div className="chat-footer text-white bg-blue-500">12.23</div>
+            <div className={`chat-bubble text-white ${bubbleBgColor} pb-2`}>{message.message}</div>
+            <div className="chat-footer text-white bg-blue-500">{formattedTime}</div>
         </div>
     )
 }
