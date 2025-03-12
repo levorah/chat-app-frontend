@@ -10,8 +10,8 @@ const useSignup = () => {
         const success = handleInputErrrors({ fullname, username, password, confirmPassword, gender })
         if (!success) return
         try {
-
-            const res = await fetch(`${import.meta.env.VITE_BASE_URL!}`, {
+            console.log(`${import.meta.env.VITE_BACKEND_URL}/auth/signup}`,'inside signup page')
+            const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/auth/signup`, {
                 method: 'POST',
                 headers: {
                     "Content-Type": "application/json",

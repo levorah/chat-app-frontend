@@ -15,7 +15,7 @@ const useSendMessage = () => {
             const accessToken = localStorage.getItem("accessToken")
             if (!accessToken) throw new Error("Token Expired")
             const token = JSON.parse(accessToken)
-            const res = await fetch(`${import.meta.env.VITE_BACKEND_URL!}/${selectedConversation._id}`, {
+            const res = await fetch(`${import.meta.env.VITE_BACKEND_URL!}/messages/send/${selectedConversation._id}`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

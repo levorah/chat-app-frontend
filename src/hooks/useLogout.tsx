@@ -7,7 +7,7 @@ const useLogout = () => {
     const [loading, setLoading] = useState(false)
     const logout = async () => {
         try {
-            const res = await fetch(`${import.meta.env.VITE_BACKEND_URL!}`)
+            const res = await fetch(`${import.meta.env.VITE_BACKEND_URL!}/auth/logout`)
             const data = await res.json()
             if (data.error) {
                 throw new Error(data.error)

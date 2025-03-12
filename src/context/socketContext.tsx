@@ -26,7 +26,7 @@ export const SocketContextProvider = ({ children }: SocketProps) => {
     const userId = localStorage.getItem("userId")
     useEffect(() => {
         if (authToken) {
-            const socket = io(`${import.meta.env.VITE_BACKEND_URL!}`, {
+            const socket = io(`${import.meta.env.VITE_SOCKET_IO_URL!}`, {
                 query: {
                     userId: userId
                 }
