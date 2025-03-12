@@ -1,9 +1,10 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import GenderCheckbox from "./genderCheckBox";
 import { useState } from "react";
 import useSignup from "../../hooks/useSignup";
 
 const SignUp = () => {
+    const navigate = useNavigate()
     const [inputs, setInputs] = useState({
         fullname: "",
         username: "",
@@ -19,6 +20,7 @@ const SignUp = () => {
     const handleSubmit = async (e: any) => {
         e.preventDefault()
         await signup(inputs)
+        navigate("/login")
     }
     return (
         <div className='flex flex-col items-center justify-center min-w-96 mx-auto'>
