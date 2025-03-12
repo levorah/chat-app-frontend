@@ -15,7 +15,7 @@ const useGetConversations = () => {
             }
             const token = JSON.parse(access_token)
             try {
-                const res = await fetch(`/v1/api/users`, {
+                const res = await fetch(`${import.meta.env.VITE_BACKEND_URL!}/users`, {
                     headers: {
                         "Authorization": `Bearer ${token}`
                     }

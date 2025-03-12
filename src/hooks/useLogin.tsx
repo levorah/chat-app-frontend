@@ -13,7 +13,7 @@ const useLogin = () => {
 
             const input = handleInputErrrors(username, password)
             if (!input) return
-            const res = await fetch(`/v1/api/auth/login`, {
+            const res = await fetch(`${import.meta.env.VITE_BACKEND_URL!}`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
@@ -22,6 +22,7 @@ const useLogin = () => {
             })
 
             const data = await res.json()
+            console.log(data,'data is showing here')
             if (data.error) {
                 throw new Error(data.error)
             }
@@ -36,6 +37,7 @@ const useLogin = () => {
             setAccessToken(accessToken);
 
         } catch (error: any) {
+            console.log(error,'what is happenign')
             toast.error(error.message)
         } finally {
             setLoading(false)
