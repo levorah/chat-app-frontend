@@ -2,6 +2,7 @@ import { Link, useNavigate } from "react-router-dom";
 import GenderCheckbox from "./genderCheckBox";
 import { useState } from "react";
 import useSignup from "../../hooks/useSignup";
+import toast from "react-hot-toast";
 
 const SignUp = () => {
     const navigate = useNavigate()
@@ -19,8 +20,12 @@ const SignUp = () => {
     }
     const handleSubmit = async (e: any) => {
         e.preventDefault()
-        await signup(inputs)
-        navigate("/login")
+        const res = await signup(inputs)
+        if (res === "sucess")
+            toast.success("Signup completed")
+            setTimeout(() => {
+            navigate("/login")
+            },3000)
     }
     return (
         <div className='flex flex-col items-center justify-center min-w-96 mx-auto'>

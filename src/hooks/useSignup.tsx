@@ -10,7 +10,6 @@ const useSignup = () => {
         const success = handleInputErrrors({ fullname, username, password, confirmPassword, gender })
         if (!success) return
         try {
-            console.log(`${import.meta.env.VITE_BACKEND_URL}/auth/signup}`,'inside signup page')
             const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/auth/signup`, {
                 method: 'POST',
                 headers: {
@@ -22,7 +21,8 @@ const useSignup = () => {
             const data = await res.json()
             if (data.error)
                 throw new Error(data.error)
-
+            else
+                return "sucess"
 
         } catch (error: any) {
             toast.error(error.message)
