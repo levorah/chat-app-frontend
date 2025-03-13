@@ -21,11 +21,12 @@ const SignUp = () => {
     const handleSubmit = async (e: any) => {
         e.preventDefault()
         const res = await signup(inputs)
-        if (res === "sucess")
+        if (res === "sucess") {
             toast.success("Signup completed")
             setTimeout(() => {
-            navigate("/login")
-            },3000)
+                navigate("/login")
+            }, 3000)
+        }
     }
     return (
         <div className='flex flex-col items-center justify-center min-w-96 mx-auto'>
