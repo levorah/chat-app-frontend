@@ -32,7 +32,7 @@ const useGetConversations = () => {
             }
         }
         getConversation()
-    }, [conversations])
+    }, [setConversations])
 
     return { loading, conversations }
 }
